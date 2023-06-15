@@ -6,12 +6,12 @@
  */
 int main(void)
 {
-	char msg[61] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+	char mg[61] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
 	int i;
 
-	while (msg[i] != '\0')
+	while (mg[i] != '\0')
 	{
-		putchar(msg[i]);
+		putchar(mg[i]);
 		i++;
 	}
 return (1);
