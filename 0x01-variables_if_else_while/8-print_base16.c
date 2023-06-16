@@ -3,7 +3,8 @@
 /**
  * main - Entry point
  *
- * prints the alphabet in revrse
+ * prints the base 16
+ * 0123456789abcdef
  * Return: 0 Always
  */
 int main(void)

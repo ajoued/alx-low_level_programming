@@ -2,8 +2,7 @@
 #include <stdlib.h>
 /**
  * main - Entry point
- *
- * prints the alphabet in revrse
+ * prints all possible combinations of single-digit numbers.
  * Return: 0 Always
  */
 int main(void)

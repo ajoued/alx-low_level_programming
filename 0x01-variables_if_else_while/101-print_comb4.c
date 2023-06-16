@@ -3,7 +3,7 @@
 /**
  * main - Entry point
  *
- * prints the alphabet in revrse
+ * prints all possible different combinations of three digits.
  * Return: 0 Always
  */
 int main(void)

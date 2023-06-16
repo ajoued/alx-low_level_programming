@@ -3,7 +3,7 @@
 /**
  * main - Entry point
  *
- * prints the alphabet in revrse
+ * prints all possible combinations of two two-digit numbers.
  * Return: 0 Always
  */
 int main(void)
