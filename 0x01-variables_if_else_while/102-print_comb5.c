@@ -8,30 +8,42 @@
  */
 int main(void)
 {
-	int num1 = 0;
-	int num2 = 0;
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	int m = 1;
 
-	while (num1 <= 99)
+	while (i < 10)
 	{
-		num2 = num1;
-		while (num2 <= 99)
+		while (j < 10)
 		{
-			if (num1 != num2)
+			while (k < 10)
 			{
-				putchar((num1 / 10) + '0');
-				putchar((num1 % 10) + '0');
-				putchar(' ');
-				putchar((num2 / 10) + '0');
-				putchar((num2 % 10) + '0');
-				if (num1 != 98 || num2 != 99)
+				while (m < 10)
 				{
-					putchar(',');
+					putchar(i + 48);
+					putchar(j + 48);
 					putchar(' ');
+					putchar(k + 48);
+					putchar(m + 48);
+					if (!(i == 9 && j == 8 && k == 9 && m == 9))
+					{
+						putchar(',');
+						putchar(' ');
+					}
+					m++;
 				}
+				m = 0;
+				k++;
 			}
-			num2++;
+			m = j + 2;
+			k = i;
+			j++;
 		}
-		num1++;
+		j = 0;
+		m = j + 1;
+		i++;
+		k = i;
 	}
 	putchar('\n');
 return (0);
