@@ -7,8 +7,9 @@
  */
 int main(void)
 {
-	char alphabet[27] ="abcdefghijklmnopqrstuvwsyz";
+	char alphabet[27] = "abcdefghijklmnopqrstuvwsyz";
 	int i = 0;
+
 	while (alphabet[i] != '\0')
 	{
 		putchar(alphabet[i]);
