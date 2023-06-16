@@ -3,7 +3,7 @@
 /**
  * main - Entry point
  * prints 0123456789 using only putchar
- * Retur: 0 Always
+ * Return: 0 Always
  */
 int main(void)
 {
