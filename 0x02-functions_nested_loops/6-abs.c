@@ -5,7 +5,7 @@
  * @n: the number to be treated
  * Return: the absolute value of the integer
  */
-int _abs(int n);
+int _abs(int n)
 {
 	return (abs(n));
 }
