@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
 /**
  * main - Entry point
  *
@@ -12,9 +13,9 @@ int main(void)
 
 	while (msg[i] != '\0')
 	{
-		putchar(msg[i]);
+		_putchar(msg[i]);
 		i++;
 	}
-	putchar('\n');
+	_putchar('\n');
 return (0);
 }
