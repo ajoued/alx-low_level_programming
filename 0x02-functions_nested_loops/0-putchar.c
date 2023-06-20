@@ -11,9 +11,9 @@ int main(void)
 
 	while (msg[i] != '\0')
 	{
-		_putchar(msg[i]);
+		putchar(msg[i]);
 		i++;
 	}
-	_putchar('\n');
+	putchar('\n');
 return (0);
 }
