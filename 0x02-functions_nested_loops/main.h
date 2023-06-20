@@ -1,6 +1,8 @@
 #include <stdio.h>
-#include <stdlib.h>
-int _putchar(int c)
+#ifndef MAIN_H
+#define MAIN_H
+int _putchar(int a)
 {
-return(putchar(c));
+	putchar(a);
 }
+#endif
