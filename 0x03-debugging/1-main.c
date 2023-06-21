@@ -2,7 +2,6 @@
 
 /**
 * main - causes an infinite loop
-* fixing infinite loop
 * Return: 0
 */
 
@@ -21,5 +20,5 @@ int main(void)
 
 	printf("Infinite loop avoided! \\o/\n");
 
-return (0);
+	return (0);
 }
