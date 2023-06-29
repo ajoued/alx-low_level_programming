@@ -9,7 +9,7 @@
 void print_number(int n)
 {
 	unsigned int t;
-	int divisor = 1;
+	unsigned int divisor = 1;
 
 	if (n < 0)
 	{
