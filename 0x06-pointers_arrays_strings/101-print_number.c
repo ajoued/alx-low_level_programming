@@ -28,10 +28,9 @@ void print_number(int n)
 		t = t / 10;
 	}
 	_putchar('0' + n / divisor);
-	while (divisor > 10)
+	while (divisor != 1)
 	{
 		divisor = divisor / 10;
 		_putchar('0' + (n / divisor) % 10);
 	}
-	_putchar('0' + n % 10);
 }
