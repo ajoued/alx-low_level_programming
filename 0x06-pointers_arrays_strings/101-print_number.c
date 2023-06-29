@@ -27,10 +27,10 @@ void print_number(int n)
 		divisor = divisor * 10;
 		t = t / 10;
 	}
-	_putchar('0' + n / divisor);
-	while (divisor != 1)
+	while (divisor != 0)
 	{
+		_putchar('0' + n / divisor);
+		n = n % divisor;
 		divisor = divisor / 10;
-		_putchar('0' + (n / divisor) % 10);
 	}
 }
