@@ -11,7 +11,7 @@
 int main(int argc, char **argv)
 {
 	int a, b, result;
-	
+
 	if (argc != 3)
 	{
 		printf("Error\n");
@@ -19,11 +19,11 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		a = atoi(argv[1]);;
+		a = atoi(argv[1]);
 		b = atoi(argv[2]);
 		(void)argc;
 		result = a * b;
 		printf("%d\n", result);
-		return 1;
+		return (0);
 	}
 }
