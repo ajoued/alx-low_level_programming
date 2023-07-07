@@ -5,7 +5,7 @@
  * main - prints all arguments it receives
  * @argc: arguments count
  * @argv: arguments array
- * return: 0 Always (success)
+ * Return: 0 Always if success
  */
 int main(int argc, char **argv)
 {
