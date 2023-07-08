@@ -11,7 +11,7 @@
  */
 int main(int argc, char **argv)
 {
-	unsigned int a, coins = 0;
+	int a, coins = 0;
 
 	if (argc != 2)
 	{
@@ -21,16 +21,21 @@ int main(int argc, char **argv)
 	else
 	{
 		a = atoi(argv[1]);
-		coins = coins + a / 25;
-		a = a % 25;
-		coins = coins + a / 10;
-		a = a % 10;
-		coins = coins + a / 5;
-		a = a % 5;
-		coins = coins + a / 2;
-		a = a % 2;
-		coins = coins + a;
+		if (a < 0)
+			printf("0\n");
+		else
+		{
+			coins = coins + a / 25;
+			a = a % 25;
+			coins = coins + a / 10;
+			a = a % 10;
+			coins = coins + a / 5;
+			a = a % 5;
+			coins = coins + a / 2;
+			a = a % 2;
+			coins = coins + a;
+			printf("%d\n", coins);
+		}
 	}
-	printf("%d\n", coins);
 	return (0);
 }
