@@ -23,7 +23,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	j = len;
 	for (i = 0; i < n; i++)
 	{
-		ptr[j] = s2[i];
+		if (s2[i] != '\0')
+			ptr[j] = s2[i];
 		j++;
 	}
 	ptr[j] = '\0';
