@@ -8,7 +8,10 @@
  */
 void free_dog(dog_t *d)
 {
-	free(d);
-	free(d->owner);
-	free(d->name);
+	if (d != NULL)
+	{	
+		free(d->owner);
+		free(d->name);
+		free(d);
+	}
 }
