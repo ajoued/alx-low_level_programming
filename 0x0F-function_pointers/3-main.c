@@ -13,28 +13,29 @@ int main(int argc, char **argv)
 {
 	int a, b;
 	int (*foo)(int, int) = get_op_func(argv[2]);
+	char *op;
 
 	argc = argc;
 	a = atoi(argv[1]);
 	b = atoi(argv[3]);
-
+	op = argv[2];
 	if (argc != 4)
 	{
 		printf("Error\n");
-		return (98);
+		exit (98);
 	}
 
-	if (foo == NULL)
+	if (foo == NULL || op[1] != '\0')
 	{
 		printf("Error\n");
-		return (99);
+		exit (99);
 	}
 
 	if ((strcmp(argv[2], "/") == 0 && b == 0)
 	|| (strcmp(argv[2], "%") == 0 && b == 0))
 	{
 		printf("Error\n");
-		return (100);
+		exit (100);
 	}
 
 	printf("%d\n", foo(a, b));
