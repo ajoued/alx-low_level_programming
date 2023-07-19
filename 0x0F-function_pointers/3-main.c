@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 
 	if (foo == NULL)
 	{
-		printf("Error2\n");
+		printf("Error\n");
 		return (99);
 	}
 
