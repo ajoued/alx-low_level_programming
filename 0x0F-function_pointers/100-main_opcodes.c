@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		exit(2);
 	}
 
-	code = (char*)main;
+	code = (char *)main;
 
 	for (i = 0; i < num_bytes; i++)
 	{
