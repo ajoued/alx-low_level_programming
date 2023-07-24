@@ -7,6 +7,6 @@
  */
 int main(void)
 {
-    print_all("cisf", 'B', 3, NULL, 3.14);
+    print_all("ecisf", 'B', 3, NULL, 3.14);
     return (0);
 }
