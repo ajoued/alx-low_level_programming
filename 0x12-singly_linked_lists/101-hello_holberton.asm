@@ -1,16 +1,15 @@
 section .data
-    hello db "Hello, Holberton", 0   ; Null-terminated string
+    format db "Hello, Holberton", 0   ; Null-terminated string
 
 section .text
     global main
 
-extern printf                   ; Declare the external printf function
+    extern printf               ; Declare the external printf function
 
 main:
-    ; Call printf to print the string
-    mov rdi, hello               ; 1st argument: pointer to the format string
-    call printf                  ; Call printf function
+    mov edi, format             ; 1st argument: pointer to the format string
+    xor eax, eax                ; Clear EAX register (return value)
+    call printf                 ; Call printf function
 
-    ; Exit the program
-    mov eax, 0                   ; Return 0 from the main function
+    mov eax, 0                  ; Return 0 from the main function
     ret
