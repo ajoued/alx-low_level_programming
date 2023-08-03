@@ -29,6 +29,7 @@ int power_of(unsigned int n, unsigned int p)
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int n = 0, i = 0, len;
+
 	if (b)
 	{
 		len = strlen(b) - 1;
