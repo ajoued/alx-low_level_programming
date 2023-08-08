@@ -14,7 +14,7 @@ int create_file(const char *filename, char *text_content)
 		return (-1);
 	if (access(filename, F_OK) != 0)
 	{
-		fd = creat(filename, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+		fd = creat(filename, 0600);
 	}
 	if (text_content != NULL)
 		len = strlen(text_content);
