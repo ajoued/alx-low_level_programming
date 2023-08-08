@@ -19,7 +19,7 @@ int create_file(const char *filename, char *text_content)
 	if (text_content != NULL)
 		len = strlen(text_content);
 
-	fd = open(filename, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+	fd = open(filename, O_RDWR);
 	written = write(fd, text_content, len);
 
 	if (fd == -1 || written == -1)
