@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 
 /**
  * create_file - creates a file
@@ -12,25 +13,14 @@ int create_file(const char *filename, char *text_content)
 
 	if (filename == NULL)
 		return (-1);
-	if (access(filename, F_OK) != 0)
-	{
-		fd = creat(filename, 0600);
-	}
-	if (text_content == NULL)
-	{
-		fd = open(filename, O_RDONLY);
-		if (fd != -1)
-			return (1);
-		return (-1);
-	}
-	else
+	if (text_content != NULL)
 		len = strlen(text_content);
 
-	fd = open(filename, O_RDWR);
+	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
 	written = write(fd, text_content, len);
 
 	if (fd == -1 || written == -1)
 		return (-1);
 	close(fd);
-	return (1);
+return (1);
 }
