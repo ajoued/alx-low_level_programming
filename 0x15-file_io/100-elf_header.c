@@ -10,6 +10,8 @@ int get_file_size(char *file);
 int check_if_elf(char *buf);
 void print_magic(char *buf);
 void print_class(char *buf);
+void print_data(char *buf);
+void print_version(char *buf);
 
 /**
  * check_usage - check if used properly
@@ -83,18 +85,71 @@ void print_magic(char *buf)
  */
 void print_class(char *buf)
 {
-	printf("Class:                             ");
 	if (buf[4] == 0)
-	printf("Invalid class\n");
+	{
+		printf("Class:                             ");
+		printf("Invalid class\n");
+	}
 	else if (buf[4] == 1)
+	{
+		printf("Class:                             ");
 		printf("ELF32\n");
+	}
 	else if (buf[4] == 2)
+	{
+		printf("Class:                             ");
 		printf("ELF64\n");
+	}
 	else
 	{
 		dprintf(STDERR_FILENO, "Error: couldn't read class\n");
+		exit(98);
 	}
 }
+/**
+ * print_data - prints the data type of elf file
+ * @buf: content of the elf file
+ * Return: nothing
+ */
+void print_data(char *buf)
+{
+	if (buf[5] == 0)
+	{
+		printf("Data:                              ");
+		printf("Invalid data encoding\n");
+	}
+	else if (buf[5] == 1)
+	{
+		printf("Data:                              ");
+		printf("2's complement, little endian\n");
+	}
+	else if (buf[5] == 2)
+	{
+		printf("Data:                              ");
+		printf("2's complement, big endian\n");
+	}
+	else
+	{
+		dprintf(STDERR_FILENO, "Error: couldn't read class\n");
+		exit(98);
+	}
+}
+/**
+ * print_version - prints the version of the elf file
+ * @buf: content of the elf file
+ * Return: nothing
+ */
+void print_version(char *buf)
+{
+	if (buf[6] == 1)
+	{
+		printf("Version:                           ");
+		printf("1 (current)\n");
+	}
+	else
+		printf("Version:                           1\n");
+}
+
 /**
  * main - displays the information contained in the ELF header
  * at the start of an ELF file
@@ -118,6 +173,8 @@ int main(int argc, char **argv)
 	{
 		print_magic(buf);
 		print_class(buf);
+		print_data(buf);
+		print_version(buf);
 	}
 
 	return (0);
