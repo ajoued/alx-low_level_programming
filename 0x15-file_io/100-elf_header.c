@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <elf.h>
 
 void check_usage(int carg);
 int get_file_size(char *file);
@@ -12,6 +13,7 @@ void print_magic(char *buf);
 void print_class(char *buf);
 void print_data(char *buf);
 void print_version(char *buf);
+void print_osabi(char *buf);
 
 /**
  * check_usage - check if used properly
@@ -149,6 +151,43 @@ void print_version(char *buf)
 	else
 		printf("Version:                           1\n");
 }
+/**
+ * print_osabi - prints os/abi of the elf file
+ * @buf: content of the elf file
+ * Return: nothing
+ */
+void print_osabi(char *buf)
+{
+	printf("OS/ABI:                            ");
+	if (buf[7] == 0)
+		printf("UNIX - System V\n");
+	else if (buf[7] == 1)
+		printf("UNIX - HP-UX\n");
+	else if (buf[7] == 2)
+		printf("UNIX - NetBSD\n");
+	else if (buf[7] == 3)
+		printf("UNIX - Linux\n");
+	else if (buf[7] == 6)
+		printf("UNIX - Solaris\n");
+	else if (buf[7] == 7)
+		printf("UNIX - AIX\n");
+	else if (buf[7] == 8)
+		printf("UNIX - IRIX\n");
+	else if (buf[7] == 9)
+		printf("UNIX - FreeBSD\n");
+	else if (buf[7] == 10)
+		printf("UNIX - Compaq TRU64 UNIX\n");
+	else if (buf[7] == 11)
+		printf("Novell Modesto\n");
+	else if (buf[7] == 12)
+		printf("Open BSD\n");
+	else if (buf[7] == 13)
+		printf("Open VMS\n");
+	else if (buf[7] == 14)
+		printf("Hewlett-Packard Non-Stop Kernel\n");
+	else
+		printf("<unknown: %x>\n", buf[7]);
+}
 
 /**
  * main - displays the information contained in the ELF header
@@ -175,6 +214,7 @@ int main(int argc, char **argv)
 		print_class(buf);
 		print_data(buf);
 		print_version(buf);
+		print_osabi(buf);
 	}
 
 	return (0);
