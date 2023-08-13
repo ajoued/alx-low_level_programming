@@ -71,9 +71,9 @@ void print_magic(char *buf)
 	printf("Magic:   ");
 	for (i = 0; i < 15; i++)
 	{
-		printf("%2x ", buf[i]);
+		printf("%02x ", buf[i]);
 	}
-	printf("%2x\n", buf[i]);
+	printf("%02x\n", buf[i]);
 }
 
 /**
