@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <elf.h>
+#include <ctype.h>
 
 void check_usage(int carg);
 int get_file_size(char *file);
@@ -14,6 +15,8 @@ void print_class(char *buf);
 void print_data(char *buf);
 void print_version(char *buf);
 void print_osabi(char *buf);
+void print_abi(char *buf);
+void print_entry(char *buf);
 
 /**
  * check_usage - check if used properly
@@ -72,7 +75,7 @@ void print_magic(char *buf)
 {
 	int i = 0;
 
-	printf("Magic:   ");
+	printf("  Magic:   ");
 	for (i = 0; i < 15; i++)
 	{
 		printf("%02x ", buf[i]);
@@ -87,21 +90,13 @@ void print_magic(char *buf)
  */
 void print_class(char *buf)
 {
+	printf("  Class:                             ");
 	if (buf[4] == 0)
-	{
-		printf("Class:                             ");
 		printf("Invalid class\n");
-	}
 	else if (buf[4] == 1)
-	{
-		printf("Class:                             ");
 		printf("ELF32\n");
-	}
 	else if (buf[4] == 2)
-	{
-		printf("Class:                             ");
 		printf("ELF64\n");
-	}
 	else
 	{
 		dprintf(STDERR_FILENO, "Error: couldn't read class\n");
@@ -115,21 +110,13 @@ void print_class(char *buf)
  */
 void print_data(char *buf)
 {
+	printf("  Data:                              ");
 	if (buf[5] == 0)
-	{
-		printf("Data:                              ");
 		printf("Invalid data encoding\n");
-	}
 	else if (buf[5] == 1)
-	{
-		printf("Data:                              ");
 		printf("2's complement, little endian\n");
-	}
 	else if (buf[5] == 2)
-	{
-		printf("Data:                              ");
 		printf("2's complement, big endian\n");
-	}
 	else
 	{
 		dprintf(STDERR_FILENO, "Error: couldn't read class\n");
@@ -143,13 +130,11 @@ void print_data(char *buf)
  */
 void print_version(char *buf)
 {
+	printf("  Version:                           ");
 	if (buf[6] == 1)
-	{
-		printf("Version:                           ");
 		printf("1 (current)\n");
-	}
 	else
-		printf("Version:                           1\n");
+		printf("1\n");
 }
 /**
  * print_osabi - prints os/abi of the elf file
@@ -158,7 +143,7 @@ void print_version(char *buf)
  */
 void print_osabi(char *buf)
 {
-	printf("OS/ABI:                            ");
+	printf("  OS/ABI:                            ");
 	if (buf[7] == 0)
 		printf("UNIX - System V\n");
 	else if (buf[7] == 1)
@@ -188,6 +173,40 @@ void print_osabi(char *buf)
 	else
 		printf("<unknown: %x>\n", buf[7]);
 }
+/**
+ * print_abi - prints abi version of the elf file
+ * @buf: content of the elf file
+ * Return: nothing
+ */
+void print_abi(char *buf)
+{
+	printf("  ABI Version:                       %x\n", buf[8]);
+}
+/**
+ * print_entry - prints entry point of elf file
+ * @buf: content of the elf file
+ */
+void print_entry(char *buf)
+{
+	int i, n;
+
+	printf("  Entry point address:               0x");
+	if (buf[4] == 1)
+	{
+		i = 24;
+		n = 28;
+	}
+	else if (buf[4] == 2)
+	{
+		i = 32;
+		n = 40;
+	}
+	for (;i < n; i++)
+	{
+		printf("%x", buf[i]);
+	}
+	printf("\n");
+}
 
 /**
  * main - displays the information contained in the ELF header
@@ -210,11 +229,16 @@ int main(int argc, char **argv)
 	read1 = read1;
 	if (check_if_elf(buf) == 0)
 	{
+		printf("ELF Header:\n");
 		print_magic(buf);
 		print_class(buf);
 		print_data(buf);
 		print_version(buf);
 		print_osabi(buf);
+		print_abi(buf);
+		printf("  Type:                              ");
+		printf("EXEC (Executable file)\n");
+		print_entry(buf);
 	}
 
 	return (0);
