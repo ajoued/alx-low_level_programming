@@ -15,8 +15,5 @@ int clear_bit(unsigned long int *n, unsigned int index)
 	j = j << index;
 	j = ~j;
 	*n = *n & j;
-	if (!(*n & j))
-		return (1);
-	else
-		return (-1);
+	return (1);
 }
