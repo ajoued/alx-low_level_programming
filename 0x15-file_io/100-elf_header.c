@@ -260,6 +260,7 @@ int main(int argc, char **argv)
 		pversion(buf->e_ident);
 		posabi(buf->e_ident);
 		pabi(buf->e_ident);
+		ptype(buf->e_type, buf->e_ident);
 		pentry(buf->e_entry, buf->e_ident);
 
 		free(buf);
