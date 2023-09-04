@@ -74,7 +74,7 @@ void pmagic(unsigned char *buf)
 {
 	int i;
 
-	printf(" Magic: ");
+	printf("  Magic:   ");
 	for (i = 0; i < EI_NIDENT - 1; i++)
 	{
 		printf("%02x ", buf[i]);
@@ -89,7 +89,7 @@ void pmagic(unsigned char *buf)
 */
 void pclass(unsigned char *buf)
 {
-	printf(" Class: ");
+	printf("  Class:                             ");
 	if (buf[EI_CLASS] == EI_CLASS)
 		printf("none\n");
 	if (buf[EI_CLASS] == ELFCLASS32)
@@ -105,7 +105,7 @@ void pclass(unsigned char *buf)
 */
 void pdata(unsigned char *buf)
 {
-	printf(" Data: ");
+	printf("  Data:                              ");
 	if (buf[EI_DATA] == ELFDATANONE)
 		printf("none\n");
 	if (buf[EI_DATA] == ELFDATA2LSB)
@@ -120,7 +120,7 @@ void pdata(unsigned char *buf)
 */
 void pversion(unsigned char *buf)
 {
-	printf(" Version: %d", buf[EI_VERSION]);
+	printf("  Version:                           %d", buf[EI_VERSION]);
 	if (buf[EI_VERSION] == EV_CURRENT)
 		printf(" (current)\n");
 	else
@@ -134,7 +134,7 @@ void pversion(unsigned char *buf)
 */
 void posabi(unsigned char *buf)
 {
-	printf(" OS/ABI: ");
+	printf("  OS/ABI:                            ");
 	if (buf[EI_OSABI] == ELFOSABI_NONE)
 		printf("UNIX - System V\n");
 	else if (buf[EI_OSABI] == ELFOSABI_SYSV)
@@ -167,7 +167,7 @@ void posabi(unsigned char *buf)
 */
 void pabi(unsigned char *buf)
 {
-	printf(" ABI Version: %d\n", buf[EI_ABIVERSION]);
+	printf("  ABI Version:                       %d\n", buf[EI_ABIVERSION]);
 }
 
 /**
@@ -179,7 +179,7 @@ void ptype(unsigned int type, unsigned char *buf)
 {
 	if (buf[EI_DATA] == ELFDATA2MSB)
 		type >>= 8;
-	printf(" Type: ");
+	printf("  Type:                              ");
 	if (type == ET_NONE)
 		printf("NONE (None)\n");
 	else if (type == ET_REL)
@@ -201,7 +201,7 @@ void ptype(unsigned int type, unsigned char *buf)
 */
 void pentry(unsigned long int entry, unsigned char *buf)
 {
-	printf(" Entry point address: ");
+	printf("  Entry point address:               ");
 	if (buf[EI_DATA] == ELFDATA2MSB)
 		{
 		entry = ((entry << 8) & 0xFF00FF00) |
